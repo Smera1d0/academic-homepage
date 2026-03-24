@@ -26,6 +26,17 @@ $(function () {
 
     $('[data-toggle="tooltip"]').tooltip()
 
+    const $navbar = $('.site-navbar');
+    const updateNavbarState = function() {
+        if ($(window).scrollTop() > 12) {
+            $navbar.addClass('nav-scrolled');
+        } else {
+            $navbar.removeClass('nav-scrolled');
+        }
+    };
+    updateNavbarState();
+    $(window).on('scroll', updateNavbarState);
+
     var $grid = $('.grid').masonry({
         "percentPosition": true,
         "itemSelector": ".grid-item",

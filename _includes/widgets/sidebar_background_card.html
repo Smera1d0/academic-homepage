@@ -1,0 +1,62 @@
+{% assign has_education = site.data.profile.education and site.data.profile.education.size > 0 %}
+{% assign has_experience = site.data.profile.experience and site.data.profile.experience.size > 0 %}
+
+{% if has_education %}
+<div class="card border-0 shadow-sm bg-white sidebar-info-card mt-3">
+    <h6 class="p-3 mb-0 border-bottom border-gray section-card-title sidebar-info-title">
+        <i class="fas fa-graduation-cap"></i> Education
+    </h6>
+    <div class="card-body px-4 py-3">
+        <div class="sidebar-info-list">
+            {% for item in site.data.profile.education %}
+            <div class="sidebar-info-item {% unless forloop.last %}mb-3{% endunless %}">
+                <div class="d-flex align-items-start">
+                    {% if item.logo %}
+                    <img src="{{ item.logo | relative_url }}" alt="{{ item.name }}" class="sidebar-info-logo mr-2">
+                    {% endif %}
+                    <div class="flex-grow-1">
+                        <div class="sidebar-info-name">{{ item.name }}</div>
+                        {% if item.position %}
+                        <div class="sidebar-info-position small">{{ item.position }}</div>
+                        {% endif %}
+                        {% if item.date %}
+                        <div class="sidebar-info-date small text-muted">{{ item.date }}</div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endif %}
+
+{% if has_experience %}
+<div class="card border-0 shadow-sm bg-white sidebar-info-card mt-3">
+    <h6 class="p-3 mb-0 border-bottom border-gray section-card-title sidebar-info-title">
+        <i class="fas fa-briefcase"></i> Experience
+    </h6>
+    <div class="card-body px-4 py-3">
+        <div class="sidebar-info-list">
+            {% for item in site.data.profile.experience %}
+            <div class="sidebar-info-item {% unless forloop.last %}mb-3{% endunless %}">
+                <div class="d-flex align-items-start">
+                    {% if item.logo %}
+                    <img src="{{ item.logo | relative_url }}" alt="{{ item.name }}" class="sidebar-info-logo mr-2">
+                    {% endif %}
+                    <div class="flex-grow-1">
+                        <div class="sidebar-info-name">{{ item.name }}</div>
+                        {% if item.position %}
+                        <div class="sidebar-info-position small">{{ item.position }}</div>
+                        {% endif %}
+                        {% if item.date %}
+                        <div class="sidebar-info-date small text-muted">{{ item.date }}</div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endif %}
